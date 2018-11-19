@@ -1,3 +1,4 @@
+from datetime import datetime
 from app import db
 
 # User class inherits from db.Model
