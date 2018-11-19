@@ -1,8 +1,9 @@
 from datetime import datetime
 from app import db
+from werkzeug.security import generate_password_hash, check_password_hash
 
-# User class inherits from db.Model
 # db.Model is a base class for all models from Flask_SQLAlchemy
+# User class inherits from db.Model
 
 class User(db.Model) :
 	id = db.Column(db.Integer, primary_key=True)
@@ -15,6 +16,12 @@ class User(db.Model) :
 	# a purpose for this method is when it comes to debugging
 	def __repr__(self) :
 		return '<User {}>'.format(self.username)
+	
+	def set_password(self, password) :
+		self.password_hash = generate_password_hash(password)
+		
+	def check_password(self, password) :
+		return check_password_hash(self.password_hash, password)
 		
 class Post(db.Model):
 	id = db.Column(db.Integer, primary_key=True)
