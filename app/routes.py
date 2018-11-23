@@ -19,7 +19,7 @@ def index():
 		'body' : 'The movie was so cool!'},
 	]
 	
-	return render_template('index.html', title = 'home', user=user, posts=posts)
+	return render_template('index.html', title = 'home', posts=posts)
 	
 @app.route('/login', methods=['GET','POST'])
 def login():
